@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TC 1 and 2">
+  <test thread-count="5" name="login and registor new account">
+    <classes>
+      <class name="test_scenario.TC_001_login"/>
+      <class name="test_scenario.TC_002_Registor_for_new_account"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
