@@ -1,12 +1,18 @@
 package test_scenario;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import base.Base_class;
 import pages.Login_page;
 
 public class TC_001_login extends Base_class {
+	
+	@BeforeTest
+	public void data_setup() {
+		sheet_name="login";
+	}
 
 	@Test(priority = 1)
 	public void login_Field_Validation() {
@@ -14,9 +20,9 @@ public class TC_001_login extends Base_class {
 		Assert.assertTrue(validateLoginUIElements);
 	}
 
-	@Test(priority = 2)
-	public void login_With_Valid_Credential() {
-		new Login_page().enter_UserName("sritha").enter_Password("Sri@8344519409")
+	@Test(priority = 2, dataProvider = "ui_login")
+	public void login_With_Valid_Credential(String user_name, String password) {
+		new Login_page().enter_UserName(user_name).enter_Password(password)
 				.click_On_SignIn_Button_with_valid_credential().validate_home_page_webElements().click_on_logout().validate_Login_page_webElements();
 
 	}

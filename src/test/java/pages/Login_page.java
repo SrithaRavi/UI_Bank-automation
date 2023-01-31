@@ -8,7 +8,7 @@ public class Login_page extends Base_class {
 	private By username_Text_box = By.id("username");
 	private By password_Text_box = By.id("password");
 	private By signIn_Button = By.xpath("//button[text()='Sign In']");
-	private By forgot_password_Link = By.xpath("//*[text()='Register For Account']");
+	private By forgot_password_Link = By.xpath("//*[text()='Forgot Your Password?']");
 	private By register_for_newAccount_Link = By.xpath("//*[text()='Register For Account']");
 	private By login_Failed_Inner_Text = By.xpath("//div[contains(text(),'login failed')]");
 	
@@ -45,9 +45,9 @@ public class Login_page extends Base_class {
 		return this;
 	}
 	
-	public registor_page click_on_registor_for_account_link() {
+	public Registor_page click_on_registor_for_account_link() {
 		driver.findElement(register_for_newAccount_Link).click();
-		return new registor_page();
+		return new Registor_page();
 	}
 
 }

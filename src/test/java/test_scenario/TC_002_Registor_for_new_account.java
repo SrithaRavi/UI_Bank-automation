@@ -1,21 +1,17 @@
 package test_scenario;
 
+import static org.testng.Assert.assertTrue;
+
 import java.util.Random;
 
 import org.testng.annotations.Test;
 
 import base.Base_class;
-import libraries.Random_integer;
 import pages.Login_page;
-import pages.registor_page;
+import pages.Registor_page;
+import utilities.Faker_Data_Factory;
 
 public class TC_002_Registor_for_new_account extends Base_class {
-
-	public int getRandomIntNumber(int start, int end) {
-		Random ran = new Random();
-		int result = ran.nextInt((end - start) + 1) + 1;
-		return result;
-	}
 
 	@Test(priority = 1)
 	public void validate_registor_page_element() {
@@ -24,23 +20,28 @@ public class TC_002_Registor_for_new_account extends Base_class {
 		;
 	}
 
-	//@Test(priority = 2)
+	@Test(priority = 2, invocationCount = 5)
 	public void registor_for_new_account_with_mandatory_fields() {
-		new Login_page().click_on_registor_for_account_link().select_Title(new registor_page().title[0])
-				.select_Gender(new registor_page().gender[0]).enter_UserName("stitha")
-				.enter_Email("Sritha" + getRandomIntNumber(10, 99) + "@gmail.com")
-				.enter_Password("sritha" + getRandomIntNumber(10, 99)).click_On_Register_Button().click_On_UILogo();
+		new Login_page().click_on_registor_for_account_link().select_Title(Faker_Data_Factory.title())
+				.select_Gender(Faker_Data_Factory.gender()).enter_UserName(Faker_Data_Factory.user_name())
+				.enter_Email(Faker_Data_Factory.email_id()).enter_Password(Faker_Data_Factory.password())
+				.click_On_Register_Button().verify_User_Registration().click_On_UILogo().validate_Login_page_webElements();
+
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, invocationCount = 5)
 	public void registor_for_new_account_with_all_fields() {
-		new Login_page().click_on_registor_for_account_link().enter_FirstName("sritha" + getRandomIntNumber(10, 99))
-				.select_Title(new registor_page().title[0]).enter_MiddleName("santhi").enter_LastName("ravi")
-				.select_Gender(new registor_page().gender[0])
-				.select_employment_Status(new registor_page().employment_Status[2]).enter_age_textBox("05/05/1995")
-				.select_maritalStatus(new registor_page().maritalStatus[0]).enter_numberOfDependents("2")
-				.enter_UserName("stitha").enter_Email("Sritha" + getRandomIntNumber(10, 99) + "@gmail.com")
-				.enter_Password("sritha" + getRandomIntNumber(10, 99)).click_On_Register_Button().click_On_UILogo();
+		boolean result = new Login_page().click_on_registor_for_account_link().enter_FirstName(Faker_Data_Factory.first_name())
+				.select_Title(Faker_Data_Factory.title()).enter_MiddleName(Faker_Data_Factory.middle_name())
+				.enter_LastName(Faker_Data_Factory.last_name()).select_Gender(Faker_Data_Factory.gender())
+				.select_employment_Status(Faker_Data_Factory.employment_status())
+				.enter_age_textBox(Faker_Data_Factory.age_mmddyy())
+				.select_maritalStatus(Faker_Data_Factory.marital_status())
+				.enter_numberOfDependents(Faker_Data_Factory.number_of_dependents())
+				.enter_UserName(Faker_Data_Factory.user_name()).enter_Email(Faker_Data_Factory.email_id())
+				.enter_Password(Faker_Data_Factory.password()).click_On_Register_Button().verify_User_Registration().click_On_UILogo()
+				.validate_Login_page_webElements();
+		assertTrue(result);
 	}
 
 }

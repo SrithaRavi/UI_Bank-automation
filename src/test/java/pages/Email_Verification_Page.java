@@ -2,7 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 
-public class Email_Verification_Page extends registor_page {
+import base.Base_class;
+
+public class Email_Verification_Page extends Base_class {
 	private By oWelcome = By.xpath("//h2[contains(text(),'Welcome To The UiBank Family!')]");
 	//private By oLogin = By.linkText("Login");
 	private By oUILogo = By.xpath("//a[@class='navbar-brand']");

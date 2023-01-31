@@ -6,11 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import base.Base_class;
 
-public class registor_page extends Base_class{
-	public String title[] = { "Ms","Mr","Mrs" };
-	public String gender[] = { "Female" ,"Male"};
-	public String employment_Status[]= {"Full-time","Part-time","Unemployed"};
-	public String maritalStatus[]= {"Single","Married","Divorced","Widowed"};
+public class Registor_page extends Base_class{
 	
 	private By firstName_TextBox = By.id("firstName");
 	private By Title_select_Tag = By.id("title");
@@ -32,7 +28,7 @@ public class registor_page extends Base_class{
 		return new Login_page();
 	}
 	
-	public registor_page validate_registor_page_webElements() {
+	public Registor_page validate_registor_page_webElements() {
 		if(driver.findElement(firstName_TextBox).isDisplayed()
 				&& driver.findElement(Title_select_Tag).isDisplayed()
 				&& driver.findElement(gender_select_tag).isDisplayed()
@@ -53,65 +49,65 @@ public class registor_page extends Base_class{
 		return this;
 	}
 	
-	public registor_page enter_FirstName(String first_Name) {
+	public Registor_page enter_FirstName(String first_Name) {
 		driver.findElement(firstName_TextBox).sendKeys(first_Name);
 		return this;
 	}
 	
-	public registor_page select_Title(String title) {
+	public Registor_page select_Title(String title) {
 		Select select = new Select(driver.findElement(Title_select_Tag));
 		select.selectByVisibleText(title);
 		return this;
 	}
 	
-	public registor_page enter_MiddleName(String mName) {
+	public Registor_page enter_MiddleName(String mName) {
 		driver.findElement(middleName_textBox).sendKeys(mName);
 		return this;
 	}
 	
-	public registor_page enter_LastName(String lName) {
+	public Registor_page enter_LastName(String lName) {
 		driver.findElement(lastName_text_box).sendKeys(lName);
 		return this;
 	}
 	
-	public registor_page select_Gender(String gender) {
+	public Registor_page select_Gender(String gender) {
 		Select select = new Select(driver.findElement(gender_select_tag));
 		select.selectByVisibleText(gender);
 		return this;
 	}
 	
-	public registor_page select_employment_Status(String employment_status) {
+	public Registor_page select_employment_Status(String employment_status) {
 		Select select=new Select(driver.findElement(employment_Status_select_tag));
 		select.selectByVisibleText(employment_status);
 		return this;
 	}
 	
-	public registor_page enter_age_textBox(String age) {
+	public Registor_page enter_age_textBox(String age) {
 		driver.findElement(age_textBox).sendKeys(age);
 		return this;
 	}
 	
-	public registor_page select_maritalStatus(String marital_status) {
+	public Registor_page select_maritalStatus(String marital_status) {
 		Select select = new Select(driver.findElement(maritalStatus_select_tag));
 		select.selectByVisibleText(marital_status);
 		return this;
 	}
 	
-	public registor_page enter_numberOfDependents(String no_of_dependencies) {
+	public Registor_page enter_numberOfDependents(String no_of_dependencies) {
 		driver.findElement(numberOfDependents_textBox).sendKeys(no_of_dependencies);
 		return this;
 	}
-	public registor_page enter_UserName(String uName) {
+	public Registor_page enter_UserName(String uName) {
 		driver.findElement(username_textBox).sendKeys(uName);
 		return this;
 	}
 	
-	public registor_page enter_Email(String email) {
+	public Registor_page enter_Email(String email) {
 		driver.findElement(email_textBox).sendKeys(email);
 		return this;
 	}
 	
-	public registor_page enter_Password(String password) {
+	public Registor_page enter_Password(String password) {
 		driver.findElement(password_textBox).sendKeys(password);
 		return this;
 	}
