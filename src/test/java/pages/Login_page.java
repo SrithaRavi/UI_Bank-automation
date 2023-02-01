@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import base.Base_class;
 
@@ -11,7 +12,10 @@ public class Login_page extends Base_class {
 	private By forgot_password_Link = By.xpath("//*[text()='Forgot Your Password?']");
 	private By register_for_newAccount_Link = By.xpath("//*[text()='Register For Account']");
 	private By login_Failed_Inner_Text = By.xpath("//div[contains(text(),'login failed')]");
-	
+	private WebDriver driver;
+	public Login_page(WebDriver driver) {
+		this.driver=driver;
+	}
 	public boolean validate_Login_page_webElements() {
 		if(driver.findElement(username_Text_box).isDisplayed() && 
 				driver.findElement(password_Text_box).isDisplayed() &&
@@ -36,7 +40,7 @@ public class Login_page extends Base_class {
 	
 	public Home_page click_On_SignIn_Button_with_valid_credential() {
 		driver.findElement(signIn_Button).click();
-		return new Home_page();
+		return new Home_page(driver);
 	}
 	
 	public Login_page click_On_SignIn_Button_With_Invalid_Credential() {
@@ -47,7 +51,7 @@ public class Login_page extends Base_class {
 	
 	public Registor_page click_on_registor_for_account_link() {
 		driver.findElement(register_for_newAccount_Link).click();
-		return new Registor_page();
+		return new Registor_page(driver);
 	}
 
 }

@@ -15,14 +15,14 @@ public class TC_002_Registor_for_new_account extends Base_class {
 
 	@Test(priority = 1)
 	public void validate_registor_page_element() {
-		new Login_page().click_on_registor_for_account_link().validate_registor_page_webElements()
+		new Login_page(driver).click_on_registor_for_account_link().validate_registor_page_webElements()
 				.click_on_navigate_ui_logo();
 		;
 	}
 
 	@Test(priority = 2, invocationCount = 5)
 	public void registor_for_new_account_with_mandatory_fields() {
-		new Login_page().click_on_registor_for_account_link().select_Title(Faker_Data_Factory.title())
+		new Login_page(driver).click_on_registor_for_account_link().select_Title(Faker_Data_Factory.title())
 				.select_Gender(Faker_Data_Factory.gender()).enter_UserName(Faker_Data_Factory.user_name())
 				.enter_Email(Faker_Data_Factory.email_id()).enter_Password(Faker_Data_Factory.password())
 				.click_On_Register_Button().verify_User_Registration().click_On_UILogo().validate_Login_page_webElements();
@@ -31,7 +31,7 @@ public class TC_002_Registor_for_new_account extends Base_class {
 
 	@Test(priority = 3, invocationCount = 5)
 	public void registor_for_new_account_with_all_fields() {
-		boolean result = new Login_page().click_on_registor_for_account_link().enter_FirstName(Faker_Data_Factory.first_name())
+		boolean result = new Login_page(driver).click_on_registor_for_account_link().enter_FirstName(Faker_Data_Factory.first_name())
 				.select_Title(Faker_Data_Factory.title()).enter_MiddleName(Faker_Data_Factory.middle_name())
 				.enter_LastName(Faker_Data_Factory.last_name()).select_Gender(Faker_Data_Factory.gender())
 				.select_employment_Status(Faker_Data_Factory.employment_status())

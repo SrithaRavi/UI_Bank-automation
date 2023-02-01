@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -22,10 +23,13 @@ public class Registor_page extends Base_class{
 	private By password_textBox=By.id("password");
 	private By registor_Button = By.xpath("//button[text()='Register']");
 	private By ui_Logo = By.xpath("//a[@class='navbar-brand']");
-	
+	private WebDriver driver;
+	public Registor_page(WebDriver driver) {
+		this.driver=driver;
+	}
 	public Login_page click_on_navigate_ui_logo() {
 		driver.findElement(ui_Logo).click();
-		return new Login_page();
+		return new Login_page(driver);
 	}
 	
 	public Registor_page validate_registor_page_webElements() {
@@ -114,7 +118,7 @@ public class Registor_page extends Base_class{
 	
 	public Email_Verification_Page click_On_Register_Button() {
 		driver.findElement(registor_Button).click();
-		return new Email_Verification_Page(); 
+		return new Email_Verification_Page(driver); 
 	}
 
 }

@@ -15,7 +15,7 @@ import utilities.propertiesReader;
 
 public class Base_class {
 
-	public static WebDriver driver;
+	public WebDriver driver;
 	public String browserType = propertiesReader.property_file_reader("environmental_details", "browser_type");
 	public String url = propertiesReader.property_file_reader("environmental_details", "production");
     public String sheet_name="";
@@ -55,7 +55,7 @@ public class Base_class {
 		return loginDatas;
 	}
 
-	//@AfterClass
+	@AfterClass
 	public void closeBrowser() {
 		driver.quit();
 	}
